@@ -1,6 +1,10 @@
-import { Outlet, NavLink } from 'react-router-dom';
+import { Outlet, Link, useLocation } from 'react-router-dom';
 
 const Layout = () => {
+
+  let location = useLocation();
+  console.log(location);
+
   return (
 
     <div className="md:flex md:min-h-screen">
@@ -8,8 +12,17 @@ const Layout = () => {
         <h2 className='font-bold text-4xl text-center text-white'>CRM-Clientes</h2>
 
         <nav className="mt-10">
-          <NavLink className="text-white block hover:text-yellow-400 mt-4 text-2xl" to="/" >Clientes</NavLink >
-          <NavLink className="text-white block hover:text-yellow-400 mt-4 text-2xl" to="/clientes/nuevo" >Clientes nuevos</NavLink >
+          <Link
+            className={
+              `${location.pathname === "/" ? "text-green-300" : "text-white"} block hover:text-yellow-400 mt-2 text-2xl `}
+            to="/"  >Clientes
+          </Link >
+
+          <Link
+            className={
+              `${location.pathname === "/clientes/nuevo" ? "text-green-300" : "text-white"} block hover:text-yellow-400 mt-2 text-2xl `}
+            to="/clientes/nuevo"  >Clientes nuevos
+          </Link >
 
         </nav>
       </aside>
@@ -19,7 +32,7 @@ const Layout = () => {
       <main className="md:w-3/4 p-10 md:h-screen overflow-scroll">
         <Outlet />
       </main>
-    </div>
+    </div >
   );
 };
 
