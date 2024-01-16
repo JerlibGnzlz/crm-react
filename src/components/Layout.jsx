@@ -3,7 +3,7 @@ import { Outlet, Link, useLocation } from 'react-router-dom';
 const Layout = () => {
 
   let location = useLocation();
-  console.log(location);
+
 
   return (
 

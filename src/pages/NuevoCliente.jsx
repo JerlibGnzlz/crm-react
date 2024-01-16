@@ -4,9 +4,14 @@ import Formulario from "../components/Formulario";
 
 
 
-export function action() {
-  return (<p>enviando al formulario</p>)
+export async function action({ request }) {
+  const formData = await request.formData();
 
+  // const datos = Object.entries(formData);
+
+  console.log([...formData]);
+
+  return formData;
 }
 
 
@@ -29,7 +34,7 @@ const NuevoCliente = () => {
 
       <div className="bg-white shadow rounded-md md:w-3/4 mx-auto px-5 py-10">
         <Form
-          method="post"
+          method="POST"
         >
           <Formulario />
           <input
