@@ -3,9 +3,9 @@ import Cliente from "../components/Cliente";
 import { obtenerClientes } from "../api/clientes";
 // eslint-disable-next-line react-refresh/only-export-components
 export function loader() {
-  const clientes = obtenerClientes()
+  const clientes = obtenerClientes();
 
-  return clientes
+  // return clientes;
 
 }
 
