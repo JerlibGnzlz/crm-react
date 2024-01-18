@@ -5,7 +5,7 @@ import { obtenerClientes } from "../api/clientes";
 export function loader() {
   const clientes = obtenerClientes();
 
-  // return clientes;
+  return clientes;
 
 }
 

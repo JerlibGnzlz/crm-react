@@ -1,7 +1,9 @@
 /* eslint-disable react-refresh/only-export-components */
-import { useNavigate, Form, useActionData } from "react-router-dom";
+import { useNavigate, Form, useActionData, redirect } from "react-router-dom";
 import Formulario from "../components/Formulario";
 import Error from "../components/Error";
+import { agregarCliente } from "../api/clientes";
+
 
 
 
@@ -32,7 +34,9 @@ export async function action({ request }) {
   if (Object.keys(error).length) {
     return error;
   }
+  await agregarCliente(datos);
 
+  return redirect("/");
 }
 
 
@@ -42,7 +46,6 @@ const NuevoCliente = () => {
   const navigate = useNavigate();
 
 
-  console.log(errores);
   return (
     <>
       <h1 className="font-bold text-4xl text-green-700 ">Nuevo Cliente</h1>

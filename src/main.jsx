@@ -23,7 +23,8 @@ const router = createBrowserRouter([
       {
         path: "/clientes/nuevo",
         element: <NuevoCliente />,
-        action: nuenvoClienteAction
+        action: nuenvoClienteAction,
+        errorElement: <ErrorPage />
         // loader: action
       },
     ]
