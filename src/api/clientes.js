@@ -5,7 +5,7 @@ export const obtenerClientes = async () => {
 };
 
 export const obtenerCliente = async (id) => {
-    const respuesta = await fetch(`${import.meta.env.VITE_API_URL}/${ id }`);
+    const respuesta = await fetch(`${import.meta.env.VITE_API_URL}/${id}`);
     const resultado = await respuesta.json();
     return resultado;
 };
@@ -31,3 +31,21 @@ export const agregarCliente = async (datos) => {
     }
 };
 
+
+export const actualizarCliente = async (id, datos) => {
+    try {
+        const respuesta = await fetch(`${import.meta.env.VITE_API_URL}/${id}`, {
+            method: "put",
+            body: JSON.stringify(datos),
+            headers: {
+                "Content-Type": "application/json"
+            }
+
+        });
+        console.log(respuesta);
+        await respuesta.json();
+
+    } catch (error) {
+        console.log(error.message);
+    }
+}

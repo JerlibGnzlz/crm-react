@@ -1,8 +1,11 @@
-import { Form, useNavigate, useLoaderData } from "react-router-dom";
-import { obtenerCliente } from "../api/clientes";
+import { Form, useNavigate, useLoaderData, useActionData, redirect } from "react-router-dom";
+import { obtenerCliente, actualizarCliente } from "../api/clientes";
 import Formulario from "../components/Formulario";
+import Error from "../components/Error";
+
 
 export async function loader({ params }) {
+
 
   const { clienteId } = params
   const cliente = await obtenerCliente(clienteId)
@@ -16,10 +19,48 @@ export async function loader({ params }) {
   return cliente
 }
 
+
+// eslint-disable-next-line react-refresh/only-export-components
+export async function action({ request, params }) {
+  const formData = await request.formData();
+
+  const { clienteId } = params
+
+  const email = formData.get("email");
+
+  const datos = Object.fromEntries(formData);
+
+
+
+  const error = [];
+
+  if (Object.values(datos).includes("")) {
+    error.push("Todos los campos son requeridos");
+  }
+
+  let regex = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])");
+
+
+  if (!regex.test(email)) {
+    error.push("El mail no es valido");
+  }
+
+  if (Object.keys(error).length) {
+    return error;
+  }
+
+  // ─── Actuallizar El Cliente ──────────────────────────────────────────
+
+
+  await actualizarCliente(clienteId, datos);
+  return redirect("/");
+}
+
 const Editarcliente = () => {
 
   const navigate = useNavigate()
   const cliente = useLoaderData()
+  const errores = useActionData()
   console.log(cliente)
 
   return (
@@ -37,7 +78,7 @@ const Editarcliente = () => {
 
       <div className="bg-white shadow rounded-md md:w-3/4 mx-auto px-5 py-10">
 
-        {/* {errores?.length && errores.map((error, i) => <Error key={i}>{error}</Error>)} */}
+        {errores?.length && errores.map((error, i) => <Error key={i}>{error}</Error>)}
 
 
         <Form
@@ -48,7 +89,7 @@ const Editarcliente = () => {
           <input
             type="submit"
             className="mt-5 w-full bg-green-700 uppercase font-bold text-white text-lg"
-            value="Registrar Cliente"
+            value="Guardar Cliente"
           />
         </Form>
       </div>

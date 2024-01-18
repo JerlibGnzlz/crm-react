@@ -1,11 +1,12 @@
 {
   "clientes": [
     {
-      "id": 1,
       "nombre": "Juan",
-      "telefono": 102013313,
+      "empresa": " Codigo Con Juan",
       "email": "juan@juan.com",
-      "empresa": " Codigo Con Juan"
+      "telefono": "102013313",
+      "notas": "d",
+      "id": 1
     },
     {
       "id": 2,
@@ -36,11 +37,12 @@
       "empresa": "Codigo Con Juan"
     },
     {
-      "id": 6,
-      "nombre": "Jerlib",
-      "telefono": 1398198938,
-      "email": "jerlib@dev.com",
-      "empresa": "Codigo Con Jerlib"
+      "nombre": "Jerlibgnzlz",
+      "empresa": "Codigo Con Jerlib",
+      "email": "jerlib@correo.com",
+      "telefono": "1398198938",
+      "notas": "ddssss",
+      "id": 6
     }
   ]
 }
