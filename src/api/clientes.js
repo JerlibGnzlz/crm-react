@@ -19,8 +19,14 @@ export const agregarCliente = async (datos) => {
         console.log(respuesta);
         await respuesta.json();
 
-
     } catch (error) {
         console.log(error.message);
     }
+};
+
+
+export const actualizarCliente = async (datos, clienteId) => {
+
+
+
 };

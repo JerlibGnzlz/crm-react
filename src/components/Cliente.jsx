@@ -1,7 +1,10 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+import { useNavigate } from "react-router-dom";
 
 const Clientes = ({ cliente }) => {
+
+  const navigate = useNavigate();
 
   const { nombre, empresa, email, telefono, id } = cliente;
   return (
@@ -18,7 +21,9 @@ const Clientes = ({ cliente }) => {
 
       <td className="p-6 flex gap-3 ">
         <button className="font-bold text-green-600 hover:text-green-700 uppercase text-sm"
-          type="button">Editar</button>
+          type="button"
+          onClick={() => navigate(`/clientes/${id}`)}
+        >Editar</button>
 
         <button className="font-bold text-red-500 hover:text-red-700 uppercase text-sm"
           type="button">Eliminar</button>
