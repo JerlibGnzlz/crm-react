@@ -15,7 +15,6 @@ export async function action({ request }) {
 
   const datos = Object.fromEntries(formData);
 
-  console.log(datos);
 
 
   const error = [];

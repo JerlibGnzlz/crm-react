@@ -7,6 +7,7 @@ import NuevoCliente, { action as nuenvoClienteAction } from './pages/NuevoClient
 import Index, { loader as clienteLoader } from './pages/Index';
 import { ErrorPage } from './components/ErrorPage';
 import Editarcliente, { loader as editarClienteLoader, action as editarClienteAction } from './pages/Editarcliente';
+import { action as eliminarClienteAction } from './components/Cliente';
 
 
 
@@ -29,11 +30,15 @@ const router = createBrowserRouter([
         // loader: action
       },
       {
-        path: "/clientes/:clienteId",
+        path: "/clientes/:clienteId/editar",
         element: <Editarcliente />,
         loader: editarClienteLoader,
         action: editarClienteAction,
         errorElement: <ErrorPage />
+      },
+      {
+        path: "/clientes/:clienteId/eliminar",
+        action: eliminarClienteAction,
       }
     ]
 

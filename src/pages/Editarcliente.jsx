@@ -4,6 +4,7 @@ import Formulario from "../components/Formulario";
 import Error from "../components/Error";
 
 
+// eslint-disable-next-line react-refresh/only-export-components
 export async function loader({ params }) {
 
 
@@ -61,7 +62,6 @@ const Editarcliente = () => {
   const navigate = useNavigate()
   const cliente = useLoaderData()
   const errores = useActionData()
-  console.log(cliente)
 
   return (
     <>
@@ -82,7 +82,7 @@ const Editarcliente = () => {
 
 
         <Form
-          method="POST"
+          method="post"
           noValidate
         >
           <Formulario cliente={cliente} />

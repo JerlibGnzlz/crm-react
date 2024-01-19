@@ -23,7 +23,6 @@ export const agregarCliente = async (datos) => {
             }
 
         });
-        console.log(respuesta);
         await respuesta.json();
 
     } catch (error) {
@@ -42,7 +41,19 @@ export const actualizarCliente = async (id, datos) => {
             }
 
         });
-        console.log(respuesta);
+        await respuesta.json();
+
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+
+export const eliminarCliente = async (id) => {
+    try {
+        const respuesta = await fetch(`${import.meta.env.VITE_API_URL}/${id}`, {
+            method: "delete",
+        });
         await respuesta.json();
 
     } catch (error) {
